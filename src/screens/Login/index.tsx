@@ -1,0 +1,50 @@
+import { VideogameAsset } from "@mui/icons-material";
+import BlackButton from "../../components/BlackButton";
+
+function LogoAvatar() {
+  return (
+    <div className="w-1/2 border border-[#161616] flex items-center justify-center bg-[#161616] rounded-[48px]">
+      <img
+        src="/images/ninja_avatar.png"
+        alt="Ninja Avatar"
+        width={400}
+        height={400}
+      />
+    </div>
+  );
+}
+
+function LogoText() {
+  return (
+    <div className="w-1/2 flex items-center justify-center text-white px-10">
+      <div className="w-[400px]">
+        <div className="flex flex-col items-start gap-14">
+          <div className="flex items-center gap-4">
+            <div className="py-1 px-3 bg-black rounded-xl flex items-center">
+              <VideogameAsset fontSize="small" />
+            </div>
+            <span className="text-xl font-poppins font-medium">Game Guide</span>
+          </div>
+
+          <div className="flex flex-col gap-5">
+            <div className="text-5xl font-poppins font-medium">DISCOVER</div>
+            <div className="text-lg font-poppins">
+              Find out what games you should play, read reviews & connect with
+              other gamers.
+            </div>
+          </div>
+
+          <BlackButton>Start searching</BlackButton>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default function Login() {
+  return (
+    <div className="border-[#030303] rounded-[48px] w-full bg-[#2E2E2E] flex h-full p-[1px]">
+      <LogoText /> <LogoAvatar />
+    </div>
+  );
+}
