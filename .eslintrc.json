@@ -23,7 +23,9 @@
     "rules": {
         "react/jsx-uses-react": "off",
         "react/react-in-jsx-scope": "off",
-        "@typescript-eslint/space-before-function-paren": ["error", "never"]
+        "@typescript-eslint/space-before-function-paren": ["error", "never"],
+        "indent": ["error", 2],
+        "jsx-quotes": ["error", "prefer-single"]
     },
     "settings": {
         "react": {

@@ -2,14 +2,14 @@ const express = require("express");
 const passport = require("passport");
 const jwt = require("jsonwebtoken");
 
-const authRoutes = express.Router();
+const router = express.Router();
 
-authRoutes.get(
+router.get(
   "/steam",
   passport.authenticate("steam", { failureRedirect: "/", session: false })
 );
 
-authRoutes.get(
+router.get(
   "/steam/redirect",
   passport.authenticate("steam", { failureRedirect: "/", session: false }),
   (req, res) => {
@@ -34,4 +34,4 @@ const setJwtCookie = (res, token) => {
   });
 };
 
-module.exports = { authRoutes };
+module.exports = router;

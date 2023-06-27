@@ -25,9 +25,8 @@ const AuthenticateRouter = createBrowserRouter([
   }
 ])
 
-export default function App (): ReactElement {
+export default function App(): ReactElement {
   const user = useUser()
-  console.log('🚀 ~ user', typeof user)
 
   return <RouterProvider router={user === null ? UnauthenticateRouter : AuthenticateRouter} />
 }

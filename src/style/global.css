@@ -25,3 +25,7 @@ body {
 #root {
     height: 100%;
 }
+
+button {
+    color: white;
+}

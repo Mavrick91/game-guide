@@ -11,16 +11,15 @@ const transformResponse = (data: AxiosResponse['data']): AxiosResponse['data'] =
   if (data === '') {
     data = null
   }
-  return data
+  return JSON.parse(data)
 }
 
-export default function ApiProvider ({ children }: Props): ReactElement {
+export default function ApiProvider({ children }: Props): ReactElement {
   const client = useMemo(() => {
     return axios.create({
       baseURL: 'http://localhost:4000',
       withCredentials: true,
       transformResponse: [transformResponse]
-
     })
   }, [])
 

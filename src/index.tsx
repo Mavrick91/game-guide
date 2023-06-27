@@ -1,6 +1,8 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 import App from './App'
 import ApiProvider from './context/ApiProvider'
 import UserProvider from './context/UserProvider'
@@ -22,6 +24,18 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
       <QueryClientProvider client={queryClient}>
         <UserProvider>
           <App />
+          <ToastContainer
+            position='top-right'
+            autoClose={1800}
+            limit={4}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable={false}
+            pauseOnHover={false}
+            theme='dark'/>
         </UserProvider>
       </QueryClientProvider>
     </ApiProvider>
