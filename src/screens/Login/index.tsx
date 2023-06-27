@@ -1,7 +1,8 @@
-import { VideogameAsset } from "@mui/icons-material";
-import BlackButton from "../../components/BlackButton";
+import { VideogameAsset } from '@mui/icons-material'
+import { type ReactElement, useCallback } from 'react'
+import BlackButton from '../../components/BlackButton'
 
-function LogoAvatar() {
+function LogoAvatar (): ReactElement {
   return (
     <div className="w-1/2 border border-[#161616] flex items-center justify-center bg-[#161616] rounded-[48px]">
       <img
@@ -11,10 +12,14 @@ function LogoAvatar() {
         height={400}
       />
     </div>
-  );
+  )
 }
 
-function LogoText() {
+function LogoText (): ReactElement {
+  const handleClickSteam = useCallback(() => {
+    window.location.href = 'http://localhost:4000/auth/steam'
+  }, [])
+
   return (
     <div className="w-1/2 flex items-center justify-center text-white px-10">
       <div className="w-[400px]">
@@ -34,17 +39,17 @@ function LogoText() {
             </div>
           </div>
 
-          <BlackButton>Start searching</BlackButton>
+          <BlackButton onClick={handleClickSteam}>Start searching</BlackButton>
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export default function Login() {
+export default function Login (): ReactElement {
   return (
     <div className="border-[#030303] rounded-[48px] w-full bg-[#2E2E2E] flex h-full p-[1px]">
       <LogoText /> <LogoAvatar />
     </div>
-  );
+  )
 }
