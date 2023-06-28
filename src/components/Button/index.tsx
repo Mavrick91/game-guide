@@ -6,7 +6,7 @@ const buttonVariants = cva('flex items-center justify-center font-poppins transi
   variants: {
     variant: {
       ghost: ['bg-transparent'],
-      black: ['text-white', 'rounded-xl', 'bg-black', 'hover:bg-[#111111]']
+      black: ['text-white', 'rounded-xl', 'bg-black', 'active:bg-[#0A0A0A]', 'hover:bg-[#141414]']
     },
     size: {
       small: ['text-sm', 'py-1', 'px-2'],
