@@ -6,10 +6,10 @@ import Sidebar from '../Sidebar';
 
 export default function Authenticate(): ReactElement {
   return (
-    <main className='h-full flex'>
+    <main className='flex h-full'>
       <Sidebar />
 
-      <div className='p-10'>
+      <div className='w-ful p-10'>
         <Outlet />
       </div>
     </main>
