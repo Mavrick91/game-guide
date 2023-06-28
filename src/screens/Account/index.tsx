@@ -77,12 +77,12 @@ export default function Account(): ReactElement {
         <GrayBox>
           <div className='flex flex-col gap-3'>
             <AccountInfo
-              label='Last Log Off'
+              label='Last connection'
               value={moment(user.lastlogoff * 1000).format('MMMM Do YYYY')}
             />
             <AccountInfo
               label='Account created'
-              value={moment(user.timecreated).format('MMMM Do YYYY')}
+              value={moment(user.timecreated * 1000).format('MMMM Do YYYY')}
             />
           </div>
         </GrayBox>
