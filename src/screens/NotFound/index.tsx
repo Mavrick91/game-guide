@@ -12,7 +12,7 @@ const NotFound: FC = () => {
   console.error(error);
 
   return (
-    <div className='h-full flex flex-col items-center justify-center text-white gap-8'>
+    <div className='flex h-full flex-col items-center justify-center gap-8 text-white'>
       <h1 className='text-7xl'>Oops!</h1>
       <p className='text-4xl'>Sorry, an unexpected error has occurred.</p>
       <p>

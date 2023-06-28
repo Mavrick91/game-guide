@@ -13,14 +13,14 @@ export default function Sidebar(): ReactElement {
   const { mutate } = useLogout();
 
   return (
-    <div className='flex flex-col w-48 h-full bg-[#2E2E2E] px-6 py-8 justify-between'>
-      <div className='flex flex-col items-center mt-6 -mx-2'>
+    <div className='flex h-full w-48 flex-col justify-between bg-[#2E2E2E] px-6 py-8'>
+      <div className='-mx-2 mt-6 flex flex-col items-center'>
         <img
           src={user.avatarfull}
           alt='avatar'
-          className='w-20 h-20 rounded-full'
+          className='h-20 w-20 rounded-full'
         />
-        <span className='mt-2 text-white font-medium'>{user.personaname}</span>
+        <span className='mt-2 font-medium text-white'>{user.personaname}</span>
       </div>
       <div className='space-y-5'>
         <Button className='font-medium'>

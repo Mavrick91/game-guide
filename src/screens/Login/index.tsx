@@ -6,7 +6,7 @@ import Button from '../../components/Button';
 
 function LogoAvatar(): ReactElement {
   return (
-    <div className='w-1/2 border border-[#161616] flex items-center justify-center bg-[#161616] rounded-[48px]'>
+    <div className='flex w-1/2 items-center justify-center rounded-[48px] border border-[#161616] bg-[#161616]'>
       <img
         src='/images/ninja_avatar.png'
         alt='Ninja Avatar'
@@ -23,11 +23,11 @@ function LogoText(): ReactElement {
   }, []);
 
   return (
-    <div className='w-1/2 flex items-center justify-center text-white px-10'>
+    <div className='flex w-1/2 items-center justify-center px-10 text-white'>
       <div className='w-[400px]'>
         <div className='flex flex-col items-start gap-14'>
           <div className='flex items-center gap-4'>
-            <div className='py-1 px-3 bg-black rounded-xl flex items-center'>
+            <div className='flex items-center rounded-xl bg-black px-3 py-1'>
               <VideogameAsset fontSize='small' />
             </div>
             <span className='text-xl font-medium'>Game Guide</span>
@@ -52,7 +52,7 @@ function LogoText(): ReactElement {
 
 export default function Login(): ReactElement {
   return (
-    <div className='border-[#030303] rounded-[48px] w-full bg-[#2E2E2E] flex h-full p-[1px]'>
+    <div className='flex h-full w-full rounded-[48px] border-[#030303] bg-[#2E2E2E] p-[1px]'>
       <LogoText /> <LogoAvatar />
     </div>
   );
