@@ -3,6 +3,12 @@ const verifyJwtMiddleware = require('../middleware/verifyJwt');
 
 const router = express.Router();
 
+router.get('/isAuthenticate', (req, res) => {
+  const token = req.cookies.jwt;
+
+  return res.status(200).json(!!token);
+});
+
 router.use(verifyJwtMiddleware);
 
 router.get('/me', (req, res) => {

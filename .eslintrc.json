@@ -8,7 +8,9 @@
         "standard-with-typescript",
         "plugin:react/recommended",
         "plugin:@tanstack/eslint-plugin-query/recommended",
-        "plugin:@typescript-eslint/recommended"
+        "plugin:@typescript-eslint/recommended",
+        "plugin:import/recommended",
+        "prettier"
     ],
     "parserOptions": {
         "ecmaVersion": "latest",
@@ -18,18 +20,42 @@
     "plugins": [
         "react",
         "@typescript-eslint",
-        "@tanstack/query"
+        "@tanstack/query",
+        "import",
+        "prettier"
     ],
     "rules": {
+        "prettier/prettier": "error",
         "react/jsx-uses-react": "off",
         "react/react-in-jsx-scope": "off",
-        "@typescript-eslint/space-before-function-paren": ["error", "never"],
-        "indent": ["error", 2],
-        "jsx-quotes": ["error", "prefer-single"]
+        "import/order": [
+            "error",
+            {
+                "groups": ["builtin", "external", "internal"],
+                "pathGroups": [
+                    {
+                        "pattern": "react",
+                        "group": "external",
+                        "position": "before"
+                    }
+                ],
+                "pathGroupsExcludedImportTypes": ["react"],
+                "newlines-between": "always",
+                "alphabetize": {
+                    "order": "asc",
+                    "caseInsensitive": true
+                }
+            }
+        ]
     },
     "settings": {
         "react": {
             "version": "detect"
+        },
+        "import/resolver": {
+            "typescript": true,
+            "node": true
         }
     }
+
 }

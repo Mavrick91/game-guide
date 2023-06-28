@@ -1,6 +1,8 @@
-import { VideogameAsset } from '@mui/icons-material'
-import { type ReactElement, useCallback } from 'react'
-import Button from '../../components/Button'
+import { type ReactElement, useCallback } from 'react';
+
+import { VideogameAsset } from '@mui/icons-material';
+
+import Button from '../../components/Button';
 
 function LogoAvatar(): ReactElement {
   return (
@@ -12,13 +14,13 @@ function LogoAvatar(): ReactElement {
         height={400}
       />
     </div>
-  )
+  );
 }
 
 function LogoText(): ReactElement {
   const handleClickSteam = useCallback(() => {
-    window.location.href = 'http://localhost:4000/auth/steam'
-  }, [])
+    window.location.href = 'http://localhost:4000/auth/steam';
+  }, []);
 
   return (
     <div className='w-1/2 flex items-center justify-center text-white px-10'>
@@ -39,11 +41,13 @@ function LogoText(): ReactElement {
             </div>
           </div>
 
-          <Button onClick={handleClickSteam} variant='black' size='medium'>Start searching</Button>
+          <Button onClick={handleClickSteam} variant='black' size='medium'>
+            Start searching
+          </Button>
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 export default function Login(): ReactElement {
@@ -51,5 +55,5 @@ export default function Login(): ReactElement {
     <div className='border-[#030303] rounded-[48px] w-full bg-[#2E2E2E] flex h-full p-[1px]'>
       <LogoText /> <LogoAvatar />
     </div>
-  )
+  );
 }

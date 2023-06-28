@@ -1,15 +1,16 @@
-import { useMutation, type UseMutationResult } from '@tanstack/react-query'
-import { useApi } from '../../context/ApiProvider'
+import { useMutation, type UseMutationResult } from '@tanstack/react-query';
+
+import { useApi } from '../../context/ApiProvider';
 
 export default function useLogout(): UseMutationResult {
-  const axios = useApi()
+  const axios = useApi();
 
   return useMutation({
-    mutationFn: async() => {
-      await axios.get('/user/logout')
+    mutationFn: async () => {
+      await axios.get('/user/logout');
     },
     onSettled: () => {
-      window.location.reload()
-    }
-  })
+      window.location.reload();
+    },
+  });
 }
