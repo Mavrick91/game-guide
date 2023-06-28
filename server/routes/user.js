@@ -16,7 +16,7 @@ router.get('/me', (req, res) => {
   res.status(200).json(req.user);
 });
 
-router.get('/logout', (req, res) => {
+router.post('/logout', (req, res) => {
   res.clearCookie('jwt');
   res.status(200).send();
 });

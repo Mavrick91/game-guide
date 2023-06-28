@@ -6,7 +6,6 @@ import { ToastContainer } from 'react-toastify';
 
 import 'react-toastify/dist/ReactToastify.css';
 import App from './App';
-import ApiProvider from './context/ApiProvider';
 import reportWebVitals from './reportWebVitals';
 import './style/global.css';
 
@@ -23,24 +22,22 @@ const queryClient = new QueryClient({
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <ApiProvider>
-      <QueryClientProvider client={queryClient}>
-        <App />
-        <ToastContainer
-          position='top-right'
-          autoClose={1800}
-          limit={4}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable={false}
-          pauseOnHover={false}
-          theme='dark'
-        />
-      </QueryClientProvider>
-    </ApiProvider>
+    <QueryClientProvider client={queryClient}>
+      <App />
+      <ToastContainer
+        position='top-right'
+        autoClose={1800}
+        limit={4}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable={false}
+        pauseOnHover={false}
+        theme='dark'
+      />
+    </QueryClientProvider>
   </React.StrictMode>
 );
 

@@ -1,10 +1,8 @@
 import { useQuery, type UseQueryResult } from '@tanstack/react-query';
 
-import { useApi } from '../../context/ApiProvider';
+import axios from '../../config/axios';
 
 export default function useIsAuthenticate(): UseQueryResult<boolean> {
-  const axios = useApi();
-
   return useQuery({
     queryKey: ['isAuthenticate'],
     queryFn: async () => {
