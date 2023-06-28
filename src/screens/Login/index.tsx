@@ -30,12 +30,12 @@ function LogoText(): ReactElement {
             <div className='py-1 px-3 bg-black rounded-xl flex items-center'>
               <VideogameAsset fontSize='small' />
             </div>
-            <span className='text-xl font-poppins font-medium'>Game Guide</span>
+            <span className='text-xl font-medium'>Game Guide</span>
           </div>
 
           <div className='flex flex-col gap-5'>
-            <div className='text-5xl font-poppins font-medium'>DISCOVER</div>
-            <div className='text-lg font-poppins'>
+            <div className='text-5xl font-medium'>DISCOVER</div>
+            <div className='text-lg'>
               Find out what games you should play, read reviews & connect with
               other gamers.
             </div>

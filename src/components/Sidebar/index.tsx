@@ -16,10 +16,11 @@ export default function Sidebar(): ReactElement {
     <div className='flex flex-col w-48 h-full bg-[#2E2E2E] px-6 py-8 justify-between'>
       <div className='flex flex-col items-center mt-6 -mx-2'>
         <img
-          src={user?.avatarfull}
+          src={user.avatarfull}
           alt='avatar'
           className='w-20 h-20 rounded-full'
         />
+        <span className='mt-2 text-white font-medium'>{user.personaname}</span>
       </div>
       <div className='space-y-5'>
         <Button className='font-medium'>
