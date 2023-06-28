@@ -1,13 +1,15 @@
 import React, { type ReactElement } from 'react';
 
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { type Router as RemixRouter } from '@remix-run/router/dist/router';
+import { type QueryClient, useQueryClient } from '@tanstack/react-query';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { RingLoader } from 'react-spinners';
 
 import Authenticate from './components/Authenticate';
 import Unauthenticate from './components/Unauthenticate';
 import UserProvider from './context/UserProvider';
 import useIsAuthenticate from './endpoints/user/useIsAuthenticate';
-import Account from './screens/Account';
+import Account, { loader as accountLoader } from './screens/Account';
 import Dashboard from './screens/Dashboard';
 import Login from './screens/Login';
 import NotFound from './screens/NotFound';
@@ -21,23 +23,29 @@ const UnauthenticateRouter = createBrowserRouter([
   },
 ]);
 
-const AuthenticateRouter = createBrowserRouter([
-  {
-    path: '/',
-    element: (
-      <UserProvider>
-        <Authenticate />
-      </UserProvider>
-    ),
-    errorElement: <NotFound />,
-    children: [
-      { path: '/', element: <Dashboard /> },
-      { path: '/account', element: <Account /> },
-    ],
-  },
-]);
+const AuthenticateRouter = (queryClient: QueryClient): RemixRouter =>
+  createBrowserRouter([
+    {
+      path: '/',
+      element: (
+        <UserProvider>
+          <Authenticate />
+        </UserProvider>
+      ),
+      errorElement: <NotFound />,
+      children: [
+        { path: '/', element: <Dashboard /> },
+        {
+          path: '/account',
+          element: <Account />,
+          loader: accountLoader(queryClient),
+        },
+      ],
+    },
+  ]);
 
 export default function App(): ReactElement {
+  const queryClient = useQueryClient();
   const { data: isAuthenticate, isLoading } = useIsAuthenticate();
 
   if (isLoading) {
@@ -51,7 +59,9 @@ export default function App(): ReactElement {
   return (
     <RouterProvider
       router={
-        isAuthenticate === true ? AuthenticateRouter : UnauthenticateRouter
+        isAuthenticate === true
+          ? AuthenticateRouter(queryClient)
+          : UnauthenticateRouter
       }
     />
   );

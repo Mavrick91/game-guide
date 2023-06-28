@@ -10,6 +10,8 @@ import ApiProvider from './context/ApiProvider';
 import reportWebVitals from './reportWebVitals';
 import './style/global.css';
 
+import './config/axios';
+
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {

@@ -53,8 +53,12 @@
             "version": "detect"
         },
         "import/resolver": {
-            "typescript": true,
-            "node": true
+            "typescript": {
+                "directory": "./tsconfig.json"
+            },
+            "node": {
+                "extensions": [".js", ".jsx", ".ts", ".tsx"]
+            }
         }
     }
 
