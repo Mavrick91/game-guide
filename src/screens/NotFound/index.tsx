@@ -1,4 +1,4 @@
-import { type FC } from 'react';
+import { type ReactElement } from 'react';
 
 import { useRouteError } from 'react-router-dom';
 
@@ -7,7 +7,7 @@ interface Error {
   message?: string;
 }
 
-const NotFound: FC = () => {
+const NotFound = (): ReactElement => {
   const error = useRouteError() as Error;
   console.error(error);
 

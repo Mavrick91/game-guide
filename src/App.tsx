@@ -4,39 +4,32 @@ import { type Router as RemixRouter } from '@remix-run/router/dist/router';
 import { type QueryClient, useQueryClient } from '@tanstack/react-query';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
-import Authenticate, {
-  loader as authenticateLoader,
-} from './components/Authenticate';
-import Unauthenticate, {
-  loader as unauthenticateLoader,
-} from './components/Unauthenticate';
-import UserProvider from './context/UserProvider';
+import Authenticate from './components/Authenticate';
+import Unauthenticate from './components/Unauthenticate';
+import useIsAuthenticate from './endpoints/user/useIsAuthenticate';
 import Account, { loader as accountLoader } from './screens/Account';
 import Dashboard from './screens/Dashboard';
 import Login from './screens/Login';
 import { action as logoutAction } from './screens/Logout';
 import NotFound from './screens/NotFound';
 
-const router = (queryClient: QueryClient): RemixRouter =>
+const UnauthenticateRouter = createBrowserRouter([
+  {
+    path: '/',
+    element: <Unauthenticate />,
+    errorElement: <NotFound />,
+    children: [{ index: true, element: <Login /> }],
+  },
+]);
+
+const AuthenticateRouter = (queryClient: QueryClient): RemixRouter =>
   createBrowserRouter([
     {
-      path: '/login',
-      element: <Unauthenticate />,
-      loader: unauthenticateLoader(queryClient),
-      errorElement: <NotFound />,
-      children: [{ index: true, element: <Login /> }],
-    },
-    {
       path: '/',
-      loader: authenticateLoader(queryClient),
-      element: (
-        <UserProvider>
-          <Authenticate />
-        </UserProvider>
-      ),
+      element: <Authenticate />,
       errorElement: <NotFound />,
       children: [
-        { path: '/', element: <Dashboard /> },
+        { index: true, element: <Dashboard /> },
         {
           path: '/account',
           element: <Account />,
@@ -44,7 +37,7 @@ const router = (queryClient: QueryClient): RemixRouter =>
         },
         {
           path: '/logout',
-          action: logoutAction,
+          action: logoutAction(queryClient),
         },
       ],
     },
@@ -52,6 +45,19 @@ const router = (queryClient: QueryClient): RemixRouter =>
 
 export default function App(): ReactElement {
   const queryClient = useQueryClient();
+  const { data: isAuthenticate, isLoading } = useIsAuthenticate();
 
-  return <RouterProvider router={router(queryClient)} />;
+  if (isLoading) {
+    return <div />;
+  }
+
+  return (
+    <RouterProvider
+      router={
+        isAuthenticate === true
+          ? AuthenticateRouter(queryClient)
+          : UnauthenticateRouter
+      }
+    />
+  );
 }
