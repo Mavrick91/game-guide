@@ -1,10 +1,11 @@
-import { type ReactElement } from 'react';
+import { type ReactElement, Suspense } from 'react';
 
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import { type QueryClient } from '@tanstack/react-query';
 import moment from 'moment';
-import { Link, useLoaderData } from 'react-router-dom';
+import { Await, defer, Link, useLoaderData } from 'react-router-dom';
 
+import AccountSkeleton from './AccountSkeleton';
 import Divider from '../../components/Divider';
 import FlagDisplay from '../../components/FlagDisplay';
 import GrayBox from '../../components/GrayBox';
@@ -43,13 +44,15 @@ const AccountInfo = ({
 
 export function loader(queryClient: QueryClient) {
   return async () => {
-    return await queryClient.ensureQueryData(getLocation());
+    const location = queryClient.ensureQueryData(getLocation());
+
+    return defer({ data: location });
   };
 }
 
 export default function Account(): ReactElement {
   const user = useUser();
-  const location = useLoaderData() as Awaited<
+  const { data } = useLoaderData() as Awaited<
     ReturnType<ReturnType<typeof loader>>
   >;
 
@@ -91,9 +94,17 @@ export default function Account(): ReactElement {
         <h1 className='text-xl font-bold'>Location</h1>
         <Divider />
         <div className='flex items-center gap-3'>
-          <div>{location.countryName}</div>
-          <FlagDisplay countryCode={location.country} />•
-          <div>{location.region}</div>•<div>{location.city}</div>
+          <Suspense fallback={<AccountSkeleton />}>
+            <Await resolve={data}>
+              {(location) => (
+                <>
+                  <div>{location.countryName}</div>
+                  <FlagDisplay countryCode={location.country} />•
+                  <div>{location.region}</div>•<div>{location.city}</div>
+                </>
+              )}
+            </Await>
+          </Suspense>
         </div>
       </div>
     </div>
