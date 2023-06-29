@@ -5,8 +5,6 @@ import {
   useContext,
 } from 'react';
 
-import { RingLoader } from 'react-spinners';
-
 import useGetUser from '../endpoints/user/useGetUser';
 import { type UserResponse } from '../types/user';
 
@@ -21,11 +19,7 @@ export default function UserProvider({ children }: Props): ReactElement {
   const { data: user, isLoading, isError } = useGetUser();
 
   if (isLoading) {
-    return (
-      <div className='flex h-full items-center justify-center'>
-        <RingLoader color='#7865AE' size={200} />
-      </div>
-    );
+    return <div />;
   }
 
   return (
