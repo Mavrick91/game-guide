@@ -8,7 +8,7 @@ import Authenticate from './components/Authenticate';
 import Unauthenticate from './components/Unauthenticate';
 import useIsAuthenticated from './endpoints/user/useIsAuthenticated';
 import Account, { loader as accountLoader } from './screens/Account';
-import Dashboard from './screens/Dashboard';
+import Dashboard, { loader as dashboardLoader } from './screens/Dashboard';
 import Login from './screens/Login';
 import { action as logoutAction } from './screens/Logout';
 import NotFound from './screens/NotFound';
@@ -29,7 +29,11 @@ const AuthenticateRouter = (queryClient: QueryClient): RemixRouter =>
       element: <Authenticate />,
       errorElement: <NotFound />,
       children: [
-        { index: true, element: <Dashboard /> },
+        {
+          index: true,
+          element: <Dashboard />,
+          loader: dashboardLoader(queryClient),
+        },
         {
           path: '/account',
           element: <Account />,

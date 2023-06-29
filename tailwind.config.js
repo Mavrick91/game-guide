@@ -4,7 +4,10 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'purple': '#7865AE',
+        'purple-pop': '#9d87d1',
+        'purple-hover': '#7562A7',
+        'purple': '#5d4d8a',
+        'purple-active': '#504276',
       },
     },
   },

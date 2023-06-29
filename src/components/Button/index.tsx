@@ -5,7 +5,7 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '../../utils/style';
 
 const buttonVariants = cva(
-  'flex items-center justify-center transition-all, duration-200 gap-3',
+  'flex items-center justify-center transition-all, duration-200 gap-3 whitespace-nowrap',
   {
     variants: {
       variant: {
@@ -22,6 +22,10 @@ const buttonVariants = cva(
         small: ['text-sm', 'py-1', 'px-2'],
         medium: ['text-base', 'py-2', 'px-7', 'font-semibold'],
       },
+      active: {
+        true: ['text-purple-pop'],
+        false: ['opacity-50'],
+      },
     },
     defaultVariants: {
       variant: 'ghost',
@@ -37,12 +41,13 @@ export default function BlackButton({
   className,
   variant,
   size,
+  active,
   ...buttonProps
 }: ButtonProps): ReactElement {
   return (
     <button
       {...buttonProps}
-      className={cn(buttonVariants({ variant, size, className }))}
+      className={cn(buttonVariants({ variant, size, active, className }))}
     />
   );
 }

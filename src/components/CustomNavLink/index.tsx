@@ -11,7 +11,12 @@ const navlinkVariants = cva(
   {
     variants: {
       variant: {
-        default: ['bg-[#161616]', 'rounded-xl', 'hover:bg-[#5d4d8a]'],
+        default: [
+          'bg-[#161616]',
+          'rounded-xl',
+          'hover:bg-purple-hover',
+          'active:bg-purple-active',
+        ],
         ghost: ['bg-transparent', 'hover:bg-[#5d4d8a]', 'rounded-xl'],
       },
       active: {
