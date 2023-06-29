@@ -6,7 +6,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import Authenticate from './components/Authenticate';
 import Unauthenticate from './components/Unauthenticate';
-import useIsAuthenticate from './endpoints/user/useIsAuthenticate';
+import useIsAuthenticated from './endpoints/user/useIsAuthenticated';
 import Account, { loader as accountLoader } from './screens/Account';
 import Dashboard from './screens/Dashboard';
 import Login from './screens/Login';
@@ -45,7 +45,7 @@ const AuthenticateRouter = (queryClient: QueryClient): RemixRouter =>
 
 export default function App(): ReactElement {
   const queryClient = useQueryClient();
-  const { data: isAuthenticate, isLoading } = useIsAuthenticate();
+  const { data: isAuthenticate, isLoading } = useIsAuthenticated();
 
   if (isLoading) {
     return <div />;
