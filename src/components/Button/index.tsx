@@ -5,11 +5,11 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '../../utils/style';
 
 const buttonVariants = cva(
-  'flex items-center justify-center transition-all, duration-200',
+  'flex items-center justify-center transition-all, duration-200 gap-3',
   {
     variants: {
       variant: {
-        ghost: ['bg-transparent'],
+        ghost: ['bg-transparent', 'w-full', 'justify-start'],
         black: [
           'text-white',
           'rounded-xl',

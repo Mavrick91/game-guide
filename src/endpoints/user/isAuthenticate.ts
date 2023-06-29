@@ -1,14 +1,14 @@
-import { useQuery, type UseQueryResult } from '@tanstack/react-query';
-
 import axios from '../../config/axios';
+import { type CustomQuery } from '../../types/useQuery';
 
-export default function useIsAuthenticate(): UseQueryResult<boolean> {
-  return useQuery({
+export default function isAuthenticate(): CustomQuery<boolean> {
+  return {
     queryKey: ['isAuthenticate'],
     queryFn: async () => {
       const res = await axios.get('/user/isAuthenticate');
 
       return res.data;
     },
-  });
+    cacheTime: 0,
+  };
 }
