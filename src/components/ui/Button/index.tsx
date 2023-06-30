@@ -37,7 +37,7 @@ interface ButtonProps
   extends ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {}
 
-export default function BlackButton({
+export default function Button({
   className,
   variant,
   size,
