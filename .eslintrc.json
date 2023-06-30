@@ -22,11 +22,9 @@
         "react",
         "@typescript-eslint",
         "@tanstack/query",
-        "import",
-        "prettier"
+        "import"
     ],
     "rules": {
-        "prettier/prettier": "error",
         "react/jsx-uses-react": "off",
         "react/react-in-jsx-scope": "off",
         "import/order": [
