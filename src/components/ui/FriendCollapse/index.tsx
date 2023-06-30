@@ -39,7 +39,7 @@ export default function FriendCollapse({
         {title}
       </Button>
       <Collapse isOpened={isOpened}>
-        <div className='mt-3 flex flex-col gap-3'>
+        <div className='no-scrollbar mt-3 flex max-h-52 flex-col gap-3 overflow-y-scroll'>
           {friendsSortedByStatus.map((friend) => (
             <DisplayFriend
               key={friend.steamid}

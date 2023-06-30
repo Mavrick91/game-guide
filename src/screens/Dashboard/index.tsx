@@ -28,12 +28,14 @@ export default function Dashboard(): ReactElement {
   >;
 
   return (
-    <div className='flex flex-col gap-5 text-white'>
-      <div className='flex gap-10'>
+    <div className='flex h-full gap-10 text-white'>
+      <div className='grow'>
         <GameLibrary
           ownedGames={data.games.ownedGames}
           recentGames={data.games.playedRecently}
         />
+      </div>
+      <div>
         <FriendsList friends={data.friends} />
       </div>
     </div>
