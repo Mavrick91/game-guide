@@ -8,6 +8,8 @@ module.exports = {
         'purple-hover': '#7562A7',
         'purple': '#5d4d8a',
         'purple-active': '#504276',
+        'moonstone-pop': '#7DCCD8',
+        'moonstone': '#58A4B0',
       },
     },
   },

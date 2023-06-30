@@ -6,10 +6,19 @@ import { useLoaderData } from 'react-router-dom';
 import FriendsList from '../../components/FriendsList';
 import GameLibrary from '../../components/GameLibrary';
 import getGamesUserInfo from '../../endpoints/user/getGamesUserInfo';
+import getUsersFriends from '../../endpoints/user/getUsersFriends';
 
 export function loader(queryClient: QueryClient) {
   return async () => {
-    return await queryClient.ensureQueryData(getGamesUserInfo());
+    const gamesPromise = queryClient.ensureQueryData(getGamesUserInfo());
+    const friendsPromise = queryClient.ensureQueryData(getUsersFriends());
+
+    const [games, friends] = await Promise.all([gamesPromise, friendsPromise]);
+
+    return {
+      games,
+      friends,
+    };
   };
 }
 
@@ -22,10 +31,10 @@ export default function Dashboard(): ReactElement {
     <div className='flex flex-col gap-5 text-white'>
       <div className='flex gap-10'>
         <GameLibrary
-          ownedGames={data.ownedGames}
-          recentGames={data.playedRecently}
+          ownedGames={data.games.ownedGames}
+          recentGames={data.games.playedRecently}
         />
-        <FriendsList />
+        <FriendsList friends={data.friends} />
       </div>
     </div>
   );
