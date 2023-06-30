@@ -6,9 +6,9 @@ import moment from 'moment';
 import { Await, defer, Link, useLoaderData } from 'react-router-dom';
 
 import AccountSkeleton from './AccountSkeleton';
-import Divider from '../../components/Divider';
-import FlagDisplay from '../../components/FlagDisplay';
-import GrayBox from '../../components/GrayBox';
+import Divider from '../../components/ui/Divider';
+import FlagDisplay from '../../components/ui/FlagDisplay';
+import GrayBox from '../../components/ui/GrayBox';
 import { useUser } from '../../context/UserProvider';
 import getLocation from '../../endpoints/user/getLocation';
 import { getProfileVisibility } from '../../utils/user';

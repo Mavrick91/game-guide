@@ -2,7 +2,7 @@ import { type ReactElement, useCallback } from 'react';
 
 import { VideogameAsset } from '@mui/icons-material';
 
-import Button from '../../components/Button';
+import Button from '../../components/ui/Button';
 
 function LogoAvatar(): ReactElement {
   return (

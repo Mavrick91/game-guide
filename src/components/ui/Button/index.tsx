@@ -2,7 +2,7 @@ import { type ButtonHTMLAttributes, type ReactElement } from 'react';
 
 import { cva, type VariantProps } from 'class-variance-authority';
 
-import { cn } from '../../utils/style';
+import { cn } from '../../../utils/style';
 
 const buttonVariants = cva(
   'flex items-center justify-center transition-all, duration-200 gap-3 whitespace-nowrap',

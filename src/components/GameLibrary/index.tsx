@@ -10,9 +10,9 @@ import StoreIcon from '@mui/icons-material/Store';
 import { Link } from 'react-router-dom';
 
 import { type GamesLight } from '../../endpoints/user/getGamesUserInfo';
-import Button from '../Button';
-import GrayBox from '../GrayBox';
-import ScrollFade from '../ScrollFade';
+import Button from '../ui/Button';
+import GrayBox from '../ui/GrayBox';
+import ScrollFade from '../ui/ScrollFade';
 
 enum Tabs {
   OWNED_GAMES = 1,

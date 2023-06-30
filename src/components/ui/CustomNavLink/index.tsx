@@ -4,7 +4,7 @@ import { type ReactElement } from 'react';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { NavLink, type NavLinkProps } from 'react-router-dom';
 
-import { cn } from '../../utils/style';
+import { cn } from '../../../utils/style';
 
 const navlinkVariants = cva(
   'flex items-center gap-3 py-3 px-6 transition-all, duration-200 text-white',

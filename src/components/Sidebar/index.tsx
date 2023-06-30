@@ -6,8 +6,8 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import { Form } from 'react-router-dom';
 
 import { useUser } from '../../context/UserProvider';
-import Button from '../Button';
-import CustomNavLink from '../CustomNavLink';
+import Button from '../ui/Button';
+import CustomNavLink from '../ui/CustomNavLink';
 
 export default function Sidebar(): ReactElement {
   const user = useUser();
