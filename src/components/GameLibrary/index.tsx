@@ -64,7 +64,7 @@ export default function GameLibrary({
   }, [activeTabIndex, ownedGames, recentGames]);
 
   return (
-    <div className='flex flex-col gap-3'>
+    <div className='flex grow flex-col gap-3'>
       <div className='flex items-center justify-start gap-6'>
         <div className='flex items-center gap-6'>
           <TabButton
