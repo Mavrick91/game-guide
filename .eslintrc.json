@@ -45,7 +45,9 @@
                     "caseInsensitive": true
                 }
             }
-        ]
+        ],
+
+        "@typescript-eslint/strict-boolean-expressions": "off"
     },
     "settings": {
         "react": {

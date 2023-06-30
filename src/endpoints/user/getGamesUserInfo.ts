@@ -4,8 +4,8 @@ import { type CustomQuery } from '../../types/useQuery';
 export interface GamesLight {
   appid: number;
   name: string;
-  playtime_forever: string;
-  img_logo_url: string;
+  playtimeForever: string;
+  logoUrl: string;
 }
 export interface GamesData {
   ownedGames: GamesLight[];

@@ -92,7 +92,7 @@ export default function GameLibrary({
           <Link key={game.appid} to={'/'}>
             <GrayBox className='hover:bg-purple-hover active:bg-purple-active'>
               <div className='flex items-center gap-5 text-base font-medium text-white'>
-                <img src={game.img_logo_url} alt={game.name} width={32} />
+                <img src={game.logoUrl} alt={game.name} width={32} />
                 <div>
                   <h1>{game.name}</h1>
                 </div>
