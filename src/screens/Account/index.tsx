@@ -29,7 +29,7 @@ const AccountInfo = ({
             to={value}
             target='_blank'
             rel='noopener noreferrer'
-            className='text-purple underline'
+            className='text-purple-pop underline'
           >
             View Profile
           </Link>
