@@ -25,7 +25,7 @@ function getProfile(req, res) {
 
 function logout(req, res) {
   res.clearCookie('jwt');
-  res.sendStatus(200);
+  res.status(200).json();
 }
 
 module.exports = router;
