@@ -16,8 +16,15 @@ export interface UserResponse {
   loccountrycode: string;
   locstatecode: string;
   loccityid: number;
+  iat: number;
+  exp: number;
 }
 
-export interface UserError {
-  error: string;
+export enum SESSION_STATUS {
+  OFFLINE,
+  ONLINE,
+  BUSY,
+  AWAY,
+  SNOOZE,
+  LOOKING_TO_TRADE,
 }

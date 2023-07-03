@@ -1,9 +1,19 @@
 import { type ReactElement } from 'react';
 
+import { type QueryClient } from '@tanstack/react-query';
 import { Outlet } from 'react-router-dom';
 
 import UserProvider from '../../context/UserProvider';
+import getAllGames from '../../endpoints/user/getAllGames';
 import Sidebar from '../Sidebar';
+
+export function loader(queryClient: QueryClient) {
+  return async () => {
+    await queryClient.ensureQueryData(getAllGames());
+
+    return null;
+  };
+}
 
 export default function Authenticate(): ReactElement {
   return (

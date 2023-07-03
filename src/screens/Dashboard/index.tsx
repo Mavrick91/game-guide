@@ -5,6 +5,7 @@ import { useLoaderData } from 'react-router-dom';
 
 import FriendsList from '../../components/FriendsList';
 import GameLibrary from '../../components/GameLibrary';
+import SearchGame from '../../components/SearchGame';
 import getGamesUserInfo from '../../endpoints/user/getGamesUserInfo';
 import getUsersFriends from '../../endpoints/user/getUsersFriends';
 
@@ -29,7 +30,8 @@ export default function Dashboard(): ReactElement {
 
   return (
     <div className='flex h-full gap-10 text-white'>
-      <div className='grow'>
+      <div className='flex grow flex-col gap-5'>
+        <SearchGame />
         <GameLibrary
           ownedGames={data.games.ownedGames}
           recentGames={data.games.playedRecently}

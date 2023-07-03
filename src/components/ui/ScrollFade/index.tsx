@@ -19,7 +19,6 @@ interface Props {
 }
 
 const ScrollFade = ({ active }: Props): ReactElement => {
-  console.log('🚀 ~ active', active);
   const rootRef = useRef<HTMLDivElement>(null);
 
   const onScroll = useCallback(() => {

@@ -4,7 +4,9 @@ import { type Router as RemixRouter } from '@remix-run/router/dist/router';
 import { type QueryClient, useQueryClient } from '@tanstack/react-query';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
-import Authenticate from './components/Authenticate';
+import Authenticate, {
+  loader as authenticateLoader,
+} from './components/Authenticate';
 import Unauthenticate from './components/Unauthenticate';
 import useIsAuthenticated from './endpoints/user/useIsAuthenticated';
 import Account, { loader as accountLoader } from './screens/Account';
@@ -28,6 +30,7 @@ const AuthenticateRouter = (queryClient: QueryClient): RemixRouter =>
       path: '/',
       element: <Authenticate />,
       errorElement: <NotFound />,
+      loader: authenticateLoader(queryClient),
       children: [
         {
           index: true,
