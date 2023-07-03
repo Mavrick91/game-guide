@@ -3,15 +3,20 @@ const verifyJwtMiddleware = require('../middleware/verifyJwt');
 const { getGames } = require('../controllers/gamesController');
 const { getFriends } = require('../controllers/friendsController');
 const { getLocation } = require('../controllers/locationController');
+const { getAllGames } = require('../controllers/allGamesController');
 
 const router = express.Router();
 
 router.get('/isAuthenticated', isAuthenticated);
+
 router.use(verifyJwtMiddleware);
+
 router.get('/me', getProfile);
 router.get('/location', getLocation);
 router.get('/games', getGames);
 router.get('/friends', getFriends);
+router.get('/all-games', getAllGames);
+
 router.post('/logout', logout);
 
 function isAuthenticated(req, res) {
