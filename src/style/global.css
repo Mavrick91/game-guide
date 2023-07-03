@@ -30,6 +30,10 @@ button {
     color: white;
 }
 
+*:focus {
+    outline: 0 solid transparent;
+}
+
 /* Hide scrollbar for Chrome, Safari and Opera */
 .no-scrollbar::-webkit-scrollbar {
     display: none;
