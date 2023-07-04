@@ -1,11 +1,12 @@
-import { useMemo } from "react";
+import { useMemo } from 'react';
 
-import { useQueryClient } from "@tanstack/react-query";
+import { useQueryClient } from '@tanstack/react-query';
 
-import { type AllGames } from "../endpoints/user/getAllGames";
+import { type AllGames } from '../endpoints/user/getAllGames';
 
-export default function useSearchedGames(query: string): AllGames[] | undefined  {
-  console.log('🚀 ~ query', query);
+export default function useSearchedGames(
+  query: string
+): AllGames[] | undefined {
   const queryClient = useQueryClient();
   const allGames = queryClient.getQueryData<AllGames[]>(['allGames']);
 
@@ -39,4 +40,4 @@ export default function useSearchedGames(query: string): AllGames[] | undefined 
       .sort((a, b) => a.name.length - b.name.length)
       .slice(0, 500);
   }, [allGames, query]);
-};
+}
