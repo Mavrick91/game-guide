@@ -1,6 +1,5 @@
 const axios = require('axios');
 const { STEAM_API_URL } = require('../config/apiUrls');
-const { getGamesForUser } = require('./gamesController');
 
 async function getFriends(req, res, next) {
   try {
@@ -12,12 +11,13 @@ async function getFriends(req, res, next) {
       format: 'json',
     };
 
-    const { data } = await axios.get(
-      `${STEAM_API_URL}/ISteamUser/GetFriendList/v0001/`,
-      { params }
-    );
+    const {
+      data: { friendslist },
+    } = await axios.get(`${STEAM_API_URL}/ISteamUser/GetFriendList/v0001/`, {
+      params,
+    });
 
-    const friendsPromises = data.friendslist.friends.map((friend) =>
+    const friendsPromises = friendslist.friends.map((friend) =>
       axios.get(`${STEAM_API_URL}/ISteamUser/GetPlayerSummaries/v2/`, {
         params: {
           steamids: friend.steamid,
@@ -27,23 +27,13 @@ async function getFriends(req, res, next) {
       })
     );
 
-    const friendsResponses = await Promise.all(friendsPromises);
-    const friendsWithGames = friendsResponses.map(
-      async (friendResponse, index) => {
-        const friendSteamId = friendResponse.data.response.players[0].steamid;
-        const games = await getGamesForUser(friendSteamId);
+    const friends = await Promise.all(friendsPromises);
 
-        return {
-          ...friendResponse.data.response.players[0],
-          friend_since: data.friendslist.friends[index].friend_since,
-          games,
-        };
-      }
-    );
+    const formattedFriends = friends
+      .map((friend) => friend.data.response)
+      .map((friend) => friend.players[0]);
 
-    const friends = await Promise.all(friendsWithGames);
-
-    res.status(200).json(friends);
+    res.status(200).json(formattedFriends);
   } catch (error) {
     next(error);
   }
