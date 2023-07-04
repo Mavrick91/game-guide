@@ -11,6 +11,9 @@ import Unauthenticate from './components/Unauthenticate';
 import useIsAuthenticated from './endpoints/user/useIsAuthenticated';
 import Account, { loader as accountLoader } from './screens/Account';
 import Dashboard, { loader as dashboardLoader } from './screens/Dashboard';
+import GameDetails, {
+  loader as gameDetailsLoader,
+} from './screens/GameDetails';
 import Login from './screens/Login';
 import { action as logoutAction } from './screens/Logout';
 import NotFound from './screens/NotFound';
@@ -41,6 +44,11 @@ const AuthenticateRouter = (queryClient: QueryClient): RemixRouter =>
           path: '/account',
           element: <Account />,
           loader: accountLoader(queryClient),
+        },
+        {
+          path: '/game/:gameId',
+          element: <GameDetails />,
+          loader: gameDetailsLoader(queryClient),
         },
         {
           path: '/logout',
