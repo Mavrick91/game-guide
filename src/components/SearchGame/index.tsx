@@ -2,31 +2,59 @@ import {
   type KeyboardEvent,
   type ReactElement,
   useCallback,
+  useEffect,
   useRef,
   useState,
 } from 'react';
 
 import SearchIcon from '@mui/icons-material/Search';
+import { useQueryClient } from '@tanstack/react-query';
+import { Link } from 'react-router-dom';
 
+import { type AllGames } from '../../endpoints/games/getAllGames';
 import useClickOutside from '../../hooks/useClickOutside';
-import PopupAllGames from '../ui/PopupAllGames';
+import useDebounce from '../../hooks/useDebounce';
+import { searchedGames } from '../../utils/games';
 
 export default function SearchGame(): ReactElement {
   const [inputValue, setInputValue] = useState('');
+  const [gameFiltered, setGameFiltered] = useState<AllGames[]>([]);
   const clickRef = useRef<HTMLDivElement | null>(null);
+  const queryClient = useQueryClient();
+  const allGames = queryClient.getQueryData<AllGames[]>(['allGames']);
 
   useClickOutside(clickRef, () => {
     setInputValue('');
+    setGameFiltered([]);
   });
 
   const handleKeyPress = useCallback(
     (event: KeyboardEvent<HTMLInputElement>): void => {
       if (event.key === 'Escape') {
         setInputValue('');
+        setGameFiltered([]);
       }
     },
     []
   );
+
+  const searched = useCallback(
+    (query: string) => {
+      if (!query) {
+        setGameFiltered([]);
+        return;
+      }
+      const result = searchedGames(query, allGames ?? []);
+      setGameFiltered(result);
+    },
+    [allGames]
+  );
+
+  const debouncedSearch = useDebounce(searched, 200);
+
+  useEffect(() => {
+    debouncedSearch(inputValue);
+  }, [inputValue, debouncedSearch]);
 
   return (
     <>
@@ -48,7 +76,15 @@ export default function SearchGame(): ReactElement {
             onKeyDown={handleKeyPress}
           />
         </div>
-        <PopupAllGames input={inputValue} />
+        {inputValue && (
+          <div className='no-scrollbar absolute inset-x-0 top-full z-20 mt-2 max-h-80 overflow-y-scroll rounded-xl bg-[#2E2E2E] shadow-2xl drop-shadow-lg'>
+            {gameFiltered?.map((game, index) => (
+              <Link to={`/game/${game.appid}`} key={index}>
+                <div className='px-6 py-4'>{game.name}</div>
+              </Link>
+            ))}
+          </div>
+        )}
       </div>
     </>
   );
