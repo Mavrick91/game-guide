@@ -14,6 +14,8 @@ app.use(passportConfig.initialize());
 
 app.use('/auth', routes.auth);
 app.use('/user', routes.user);
+app.use('/games', routes.games);
+app.use('/friends', routes.friends);
 
 app.use((err, req, res) => {
   console.error(err);
