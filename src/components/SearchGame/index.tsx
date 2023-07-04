@@ -23,9 +23,10 @@ export default function SearchGame(): ReactElement {
     if (!deferredQuery) return null;
 
     return allGames
-      ?.filter((game) => {
-        return game.name.toLowerCase().includes(deferredQuery.toLowerCase());
-      })
+      ?.filter((game) =>
+        game.name.toLowerCase().includes(deferredQuery.toLowerCase())
+      )
+      .sort((a, b) => a.name.localeCompare(b.name))
       .slice(0, 10);
   }, [allGames, deferredQuery]);
 
@@ -41,7 +42,7 @@ export default function SearchGame(): ReactElement {
   return (
     <>
       {deferredQuery && (
-        <div className='absolute inset-0 bg-[#161616] bg-opacity-90' />
+        <div className='absolute inset-0 z-10 bg-[#161616] bg-opacity-80' />
       )}
       <div className='relative z-50 flex flex-col'>
         <div className='relative z-20 flex'>
