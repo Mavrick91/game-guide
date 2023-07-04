@@ -15,7 +15,7 @@ export default function getAllGames(): CustomQuery<AllGames[]> {
   return {
     queryKey: ['allGames'],
     queryFn: async () => {
-      const { data } = await axios.get<GamesAPI>('/user/all-games');
+      const { data } = await axios.get<GamesAPI>('/games/all-games');
 
       return data.applist.apps.filter((game) => game.name);
     },

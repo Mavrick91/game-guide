@@ -1,6 +1,5 @@
 const express = require('express');
 const verifyJwtMiddleware = require('../middleware/verifyJwt');
-const { getFriends } = require('../controllers/friendsController');
 const { getLocation } = require('../controllers/locationController');
 
 const router = express.Router();
@@ -11,7 +10,6 @@ router.use(verifyJwtMiddleware);
 
 router.get('/me', getProfile);
 router.get('/location', getLocation);
-router.get('/friends', getFriends);
 
 router.post('/logout', logout);
 

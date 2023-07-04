@@ -27,7 +27,7 @@ export default function getUsersFriends(): CustomQuery<UsersFriends[]> {
   return {
     queryKey: ['friends'],
     queryFn: async () => {
-      const { data } = await axios.get<UsersFriends[]>('/user/friends');
+      const { data } = await axios.get<UsersFriends[]>('/friends');
       return data;
     },
   };
