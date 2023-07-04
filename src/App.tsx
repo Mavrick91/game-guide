@@ -46,7 +46,7 @@ const AuthenticateRouter = (queryClient: QueryClient): RemixRouter =>
           loader: accountLoader(queryClient),
         },
         {
-          path: '/game/:gameId',
+          path: '/games/:gameId',
           element: <GameDetails />,
           loader: gameDetailsLoader(queryClient),
         },

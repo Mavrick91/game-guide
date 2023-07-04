@@ -19,5 +19,6 @@ export default function getAllGames(): CustomQuery<AllGames[]> {
 
       return data.applist.apps.filter((game) => game.name);
     },
+    staleTime: Infinity,
   };
 }
