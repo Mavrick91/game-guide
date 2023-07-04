@@ -2,7 +2,7 @@ import { type ReactElement, useMemo } from 'react';
 
 import moment from 'moment';
 
-import { type UsersFriends } from '../../../endpoints/user/getUsersFriends';
+import { type UsersFriends } from '../../../endpoints/friends/getUsersFriends';
 import { getPersonastateString, type PersonaState } from '../../../utils/user';
 
 interface Props {

@@ -1,6 +1,6 @@
 import { type ReactElement, useCallback, useMemo } from 'react';
 
-import { type UsersFriends } from '../../endpoints/user/getUsersFriends';
+import { type UsersFriends } from '../../endpoints/friends/getUsersFriends';
 import FriendCollapse from '../ui/FriendCollapse';
 import GrayBox from '../ui/GrayBox';
 

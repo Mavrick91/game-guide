@@ -2,7 +2,7 @@ import { type ReactElement, useCallback, useMemo, useState } from 'react';
 
 import { Collapse } from 'react-collapse';
 
-import { type UsersFriends } from '../../../endpoints/user/getUsersFriends';
+import { type UsersFriends } from '../../../endpoints/friends/getUsersFriends';
 import { getPersonastateString } from '../../../utils/user';
 import Button from '../Button';
 import DisplayFriend from '../DisplayFriend';

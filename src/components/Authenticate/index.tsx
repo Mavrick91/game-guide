@@ -4,7 +4,7 @@ import { type QueryClient } from '@tanstack/react-query';
 import { Outlet } from 'react-router-dom';
 
 import UserProvider from '../../context/UserProvider';
-import getAllGames from '../../endpoints/user/getAllGames';
+import getAllGames from '../../endpoints/games/getAllGames';
 import Sidebar from '../Sidebar';
 
 export function loader(queryClient: QueryClient) {

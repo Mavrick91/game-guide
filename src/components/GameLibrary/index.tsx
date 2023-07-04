@@ -9,7 +9,7 @@ import SportsEsportsIcon from '@mui/icons-material/SportsEsports';
 import StoreIcon from '@mui/icons-material/Store';
 import { Link } from 'react-router-dom';
 
-import { type GamesLight } from '../../endpoints/user/getGamesUserInfo';
+import { type GamesLight } from '../../endpoints/games/getGamesUserInfo';
 import Button from '../ui/Button';
 import GrayBox from '../ui/GrayBox';
 import ScrollFade from '../ui/ScrollFade';

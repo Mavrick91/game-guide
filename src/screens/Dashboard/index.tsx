@@ -6,8 +6,8 @@ import { useLoaderData } from 'react-router-dom';
 import FriendsList from '../../components/FriendsList';
 import GameLibrary from '../../components/GameLibrary';
 import SearchGame from '../../components/SearchGame';
-import getGamesUserInfo from '../../endpoints/user/getGamesUserInfo';
-import getUsersFriends from '../../endpoints/user/getUsersFriends';
+import getUsersFriends from '../../endpoints/friends/getUsersFriends';
+import getGamesUserInfo from '../../endpoints/games/getGamesUserInfo';
 
 export function loader(queryClient: QueryClient) {
   return async () => {

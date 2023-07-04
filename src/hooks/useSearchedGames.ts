@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 
 import { useQueryClient } from '@tanstack/react-query';
 
-import { type AllGames } from '../endpoints/user/getAllGames';
+import { type AllGames } from '../endpoints/games/getAllGames';
 
 export default function useSearchedGames(
   query: string
