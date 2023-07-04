@@ -18,7 +18,7 @@ async function getFriends(req, res, next) {
     );
 
     const friendsPromises = data.friendslist.friends.map((friend) =>
-      axios.get(`${STEAM_API_URL}/ISteamUser/GetPlayerSummaries/v0002/`, {
+      axios.get(`${STEAM_API_URL}/ISteamUser/GetPlayerSummaries/v2/`, {
         params: {
           steamids: friend.steamid,
           key: process.env.STEAM_API_KEY,

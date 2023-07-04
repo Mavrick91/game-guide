@@ -13,7 +13,7 @@ async function getGameDetails(req, res, next) {
     };
 
     const { data } = await axios.get(
-      `${STEAM_API_URL}/ISteamNews/GetNewsForApp/v0002/`,
+      `${STEAM_API_URL}/ISteamNews/GetNewsForApp/v2/`,
       { params }
     );
 

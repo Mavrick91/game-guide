@@ -8,7 +8,7 @@ async function getAllGames(req, res, next) {
     };
 
     const response = await axios.get(
-      `${STEAM_API_URL}/ISteamApps/GetAppList/v0002/`,
+      `${STEAM_API_URL}/ISteamApps/GetAppList/v2/`,
       {
         params,
         responseType: 'stream',
