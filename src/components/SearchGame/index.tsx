@@ -2,15 +2,22 @@ import {
   type KeyboardEvent,
   type ReactElement,
   useCallback,
+  useRef,
   useState,
 } from 'react';
 
 import SearchIcon from '@mui/icons-material/Search';
 
+import useClickOutside from '../../hooks/useClickOutside';
 import PopupAllGames from '../ui/PopupAllGames';
 
 export default function SearchGame(): ReactElement {
   const [inputValue, setInputValue] = useState('');
+  const clickRef = useRef<HTMLDivElement | null>(null);
+
+  useClickOutside(clickRef, () => {
+    setInputValue('');
+  });
 
   const handleKeyPress = useCallback(
     (event: KeyboardEvent<HTMLInputElement>): void => {
@@ -26,7 +33,7 @@ export default function SearchGame(): ReactElement {
       {inputValue && (
         <div className='absolute inset-0 z-10 bg-[#161616] bg-opacity-80' />
       )}
-      <div className='relative z-50 flex flex-col'>
+      <div className='relative z-50 flex flex-col' ref={clickRef}>
         <div className='relative z-20 flex'>
           <div className='absolute left-5 top-1/2 -translate-y-1/2 transform'>
             <SearchIcon fontSize='large' />
@@ -39,9 +46,6 @@ export default function SearchGame(): ReactElement {
               setInputValue(e.target.value);
             }}
             onKeyDown={handleKeyPress}
-            onBlur={() => {
-              setInputValue('');
-            }}
           />
         </div>
         <PopupAllGames input={inputValue} />
