@@ -17,16 +17,6 @@ const buttonVariants = cva(
           'active:bg-[#0A0A0A]',
           'hover:bg-[#141414]',
         ],
-        collapse: [
-          'bg-gradient-to-r',
-          'from-[#161616]',
-          'to-[#2E2E2E]',
-          'relatve w-full',
-          'justify-start',
-          'rounded-2xl',
-          'px-4',
-          'py-2',
-        ],
       },
       size: {
         small: ['text-sm', 'py-1', 'px-2'],
