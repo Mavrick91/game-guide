@@ -1,23 +1,29 @@
 import axios from '../../config/axios';
 import { type CustomQuery } from '../../types/useQuery';
 
-export interface AllGames {
-  appid: number;
-  name: string;
+interface PriceOverviewSchema {
+  final_formatted: string;
+  initial_formatted: string;
+  discount_percent: number;
+  final: number;
+  initial: number;
+  currency: string;
 }
 
-interface GamesAPI {
-  applist: {
-    apps: AllGames[];
-  };
+export interface AllGames {
+  appID: number;
+  name: string;
+  is_free: boolean;
+  price_overview: PriceOverviewSchema;
 }
+
 export default function getAllGames(): CustomQuery<AllGames[]> {
   return {
     queryKey: ['allGames'],
     queryFn: async () => {
-      const { data } = await axios.get<GamesAPI>('/games/all-games');
+      const { data } = await axios.get<AllGames[]>('/games/all-games');
 
-      return data.applist.apps.filter((game) => game.name);
+      return data;
     },
     staleTime: Infinity,
   };
