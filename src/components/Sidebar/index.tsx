@@ -3,14 +3,15 @@ import { type ReactElement } from 'react';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
 import LogoutIcon from '@mui/icons-material/Logout';
-import { Form } from 'react-router-dom';
 
 import { useUser } from '../../context/UserProvider';
+import useLogout from '../../endpoints/user/useLogout';
 import Button from '../ui/Button';
 import CustomNavLink from '../ui/CustomNavLink';
 
 export default function Sidebar(): ReactElement {
   const user = useUser();
+  const logout = useLogout();
 
   return (
     <div className='flex h-full w-56 flex-col gap-9 bg-[#2E2E2E] px-3 py-8'>
@@ -33,12 +34,10 @@ export default function Sidebar(): ReactElement {
             <AccountCircleIcon />
             <span>Account</span>
           </CustomNavLink>
-          <Form action='/logout' method='post'>
-            <Button type='submit' className='px-6 py-3 font-medium'>
-              <LogoutIcon />
-              <span>Log out</span>
-            </Button>
-          </Form>
+          <Button onClick={logout} className='px-6 py-3 font-medium'>
+            <LogoutIcon />
+            <span>Log out</span>
+          </Button>
         </div>
       </div>
     </div>

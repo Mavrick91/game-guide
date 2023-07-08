@@ -15,7 +15,6 @@ import GameDetails, {
   loader as gameDetailsLoader,
 } from './screens/GameDetails';
 import Login from './screens/Login';
-import { action as logoutAction } from './screens/Logout';
 import NotFound from './screens/NotFound';
 
 const UnauthenticateRouter = createBrowserRouter([
@@ -49,10 +48,6 @@ const AuthenticateRouter = (queryClient: QueryClient): RemixRouter =>
           path: '/games/:gameId',
           element: <GameDetails />,
           loader: gameDetailsLoader(queryClient),
-        },
-        {
-          path: '/logout',
-          action: logoutAction(queryClient),
         },
       ],
     },
