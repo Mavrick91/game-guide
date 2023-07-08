@@ -12,7 +12,7 @@ router.use(verifyJwtMiddleware);
 router.get('/me', getProfile);
 router.get('/location', getLocation);
 
-router.post('/logout', logout);
+router.get('/logout', logout);
 
 function isAuthenticated(req, res) {
   const token = req.cookies.jwt;
