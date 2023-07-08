@@ -4,6 +4,7 @@ const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const passportConfig = require('./config/passport');
 const routes = require('./routes');
+const { connectToDatabase } = require('./database');
 
 const PORT = process.env.PORT || 4000;
 const app = express();
@@ -22,4 +23,10 @@ app.use((err, req, res) => {
   res.status(500).json({ error: 'Internal Server Error' });
 });
 
-app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
+connectToDatabase()
+  .then(() => {
+    app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
+  })
+  .catch((error) => {
+    console.error('Erreur lors de la connexion à la base de données :', error);
+  });

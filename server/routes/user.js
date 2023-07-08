@@ -1,6 +1,7 @@
 const express = require('express');
 const verifyJwtMiddleware = require('../middleware/verifyJwt');
 const { getLocation } = require('../controllers/locationController');
+const User = require('../models/User');
 
 const router = express.Router();
 
@@ -18,8 +19,14 @@ function isAuthenticated(req, res) {
   res.status(200).json(!!token);
 }
 
-function getProfile(req, res) {
-  res.status(200).json(req.user);
+async function getProfile(req, res) {
+  const user = await User.findOne({ steamid: req.user.steamid });
+
+  if (!user) {
+    return res.status(404).json({ error: 'User not found' });
+  }
+
+  res.status(200).json(user);
 }
 
 function logout(req, res) {

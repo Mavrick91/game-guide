@@ -29,6 +29,7 @@
     "lucide-react": "^0.256.0",
     "match-sorter": "^6.3.1",
     "moment": "^2.29.4",
+    "mongoose": "^7.3.2",
     "nodemon": "^2.0.22",
     "passport": "^0.6.0",
     "passport-steam": "^1.0.18",
@@ -46,7 +47,7 @@
   },
   "scripts": {
     "client": "react-scripts start",
-    "server": "nodemon server/index.js",
+    "server": "nodemon server/server.js",
     "start": "concurrently \"npm run client\" \"npm run server\"",
     "build": "react-scripts build",
     "test": "react-scripts test",
