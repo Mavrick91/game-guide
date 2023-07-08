@@ -1,7 +1,7 @@
 import axios from '../../config/axios';
 import { type CustomQuery } from '../../types/useQuery';
 
-interface PriceOverviewSchema {
+export interface PriceOverview {
   final_formatted: string;
   initial_formatted: string;
   discount_percent: number;
@@ -14,7 +14,7 @@ export interface AllGames {
   appID: number;
   name: string;
   is_free: boolean;
-  price_overview: PriceOverviewSchema;
+  price_overview?: PriceOverview;
 }
 
 export default function getAllGames(): CustomQuery<AllGames[]> {

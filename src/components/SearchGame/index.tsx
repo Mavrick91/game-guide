@@ -15,6 +15,7 @@ import { type AllGames } from '../../endpoints/games/getAllGames';
 import useClickOutside from '../../hooks/useClickOutside';
 import useDebounce from '../../hooks/useDebounce';
 import { searchedGames } from '../../utils/games';
+import GamePrice from '../ui/GamePrice';
 
 export default function SearchGame(): ReactElement {
   const [inputValue, setInputValue] = useState('');
@@ -78,9 +79,23 @@ export default function SearchGame(): ReactElement {
         </div>
         {inputValue && (
           <div className='no-scrollbar absolute inset-x-0 top-full z-20 mt-2 max-h-80 overflow-y-scroll rounded-xl bg-[#2E2E2E] shadow-2xl drop-shadow-lg'>
+            {gameFiltered.length > 0 && (
+              <div className='border-b p-2 text-center text-xs opacity-60'>
+                Current games from Apr 18, 2011 to Sep 06, 2020.
+              </div>
+            )}
             {gameFiltered?.map((game, index) => (
-              <Link to={`/games/${game.appID}`} key={index}>
-                <div className='px-6 py-4'>{game.name}</div>
+              <Link to={`/games/${game.appID}`} key={index} tabIndex={0}>
+                <div className='hover flex items-center justify-between px-6 py-4 transition-colors duration-200 ease-in-out hover:bg-purple-hover active:bg-purple-active'>
+                  <div>{game.name}</div>
+                  <div>
+                    {game.is_free ? (
+                      'Free'
+                    ) : (
+                      <GamePrice priceOverview={game.price_overview} />
+                    )}
+                  </div>
+                </div>
               </Link>
             ))}
           </div>
