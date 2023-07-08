@@ -1,20 +1,10 @@
-const axios = require('axios');
-const { STEAM_API_URL } = require('../config/apiUrls');
+const Game = require('../models/Game');
 
 async function getAllGames(req, res, next) {
   try {
-    const params = {
-      format: 'json',
-    };
+    const result = await Game.find();
 
-    const response = await axios.get(
-      `${STEAM_API_URL}/ISteamApps/GetAppList/v2/`,
-      {
-        params,
-        responseType: 'stream',
-      }
-    );
-    response.data.pipe(res);
+    res.send(result).status(200);
   } catch (error) {
     next(error);
   }
