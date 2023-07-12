@@ -7,7 +7,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Authenticate, {
   loader as authenticateLoader,
 } from './components/Authenticate';
-import Unauthenticate from './components/Unauthenticate';
+import Unauthenticated from './components/Unauthenticate';
 import useIsAuthenticated from './endpoints/user/useIsAuthenticated';
 import Account, { loader as accountLoader } from './screens/Account';
 import Dashboard, { loader as dashboardLoader } from './screens/Dashboard';
@@ -17,10 +17,10 @@ import GameDetails, {
 import Login from './screens/Login';
 import NotFound from './screens/NotFound';
 
-const UnauthenticateRouter = createBrowserRouter([
+const UnauthenticatedRouter = createBrowserRouter([
   {
     path: '/',
-    element: <Unauthenticate />,
+    element: <Unauthenticated />,
     errorElement: <NotFound />,
     children: [{ index: true, element: <Login /> }],
   },
@@ -66,7 +66,7 @@ export default function App(): ReactElement {
       router={
         isAuthenticate === true
           ? AuthenticateRouter(queryClient)
-          : UnauthenticateRouter
+          : UnauthenticatedRouter
       }
     />
   );
