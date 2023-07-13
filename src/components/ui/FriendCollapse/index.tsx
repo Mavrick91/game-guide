@@ -26,7 +26,7 @@ export default function FriendCollapse({
     <div className='relative'>
       <input
         type='checkbox'
-        className='peer absolute inset-0 z-10 max-h-10 cursor-pointer opacity-0'
+        className='peer absolute inset-0 z-10 h-full max-h-10 w-full cursor-pointer opacity-0'
         defaultChecked={isChecked}
       />
       <div className='absolute left-1 top-[9px] flex h-5 w-5 items-center justify-center before:absolute before:h-[2px] before:w-[10px] before:bg-white before:content-[""] after:absolute after:h-[10px] after:w-[2px] after:bg-white after:transition-opacity after:duration-300 after:content-[""] peer-checked:after:opacity-0' />
