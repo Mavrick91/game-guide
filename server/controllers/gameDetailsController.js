@@ -17,7 +17,7 @@ async function getGameDetails(req, res, next) {
       { params }
     );
 
-    res.status(200).send(data);
+    res.status(200).send(data.appnews);
   } catch (error) {
     next(error);
   }
