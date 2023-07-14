@@ -36,7 +36,9 @@ const DisplayFriend = ({ friend, status }: Props): ReactElement => {
           className={`h-8 w-8 ${avatarBrightness}`}
         />
         <div className='flex flex-col text-[#58A4B0]'>
-          <span className={`text-sm ${textClass}`}>{friend.personaname}</span>
+          <span data-testid='player-name' className={`text-sm ${textClass}`}>
+            {friend.personaname}
+          </span>
           <span className={`text-xs text-moonstone ${subTextClass}`}>
             {statusText}
           </span>
