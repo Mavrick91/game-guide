@@ -2,6 +2,7 @@
 const config = {
   verbose: true,
   testEnvironment: 'jsdom',
+  setupFilesAfterEnv: ['./src/setupTests.ts'],
 };
 
 module.exports = config;
