@@ -1,33 +1,32 @@
 import axios from '../../config/axios';
 import { type CustomQuery } from '../../types/useQuery';
 
-export interface GamesDetails {
-  appnews: {
-    appid: number;
-    newsitems: Array<{
-      'gid': string;
-      'title': string;
-      'url': string;
-      'is_external_url': boolean;
-      'author': string;
-      'contents': string;
-      'feedlabel': string;
-      'date': number;
-      'feedname': string;
-      'feed_type': 1;
-      'appid': number;
-    }>;
-    count: number;
-  };
+interface NewsItem {
+  gid: string;
+  title: string;
+  url: string;
+  is_external_url: boolean;
+  author: string;
+  contents: string;
+  feedlabel: string;
+  date: number;
+  feedname: string;
+  feed_type: number;
+  appid: number;
+  tags?: string[];
 }
 
-export default function getGameDetails(
-  gameId: string
-): CustomQuery<GamesDetails> {
+export interface AppNews {
+  appid: number;
+  newsitems: NewsItem[];
+  count: number;
+}
+
+export default function getGameDetails(gameId: string): CustomQuery<AppNews> {
   return {
     queryKey: ['game', gameId],
     queryFn: async () => {
-      const { data } = await axios.get<GamesDetails>(`/games/${gameId}`);
+      const { data } = await axios.get<AppNews>(`/games/${gameId}`);
       return data;
     },
   };
