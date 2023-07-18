@@ -32,7 +32,7 @@ export default function FriendsList({ friends }: Props): ReactElement {
         <FriendCollapse
           title={titleWithCount('Online', friendsOnline.length)}
           friends={friendsOnline}
-          isChecked
+          isChecked={friendsOnline.length > 0}
         />
         <FriendCollapse
           title={titleWithCount('Offline', friendsOffline.length)}
